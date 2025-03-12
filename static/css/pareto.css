@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+:root{
+     --base-color:white;
+     --base-varient:#ffffff;
+     --text-color:#111528;
+     --secondary-text:#232738;
+     --primary-color:#3a435d;
+     --accent-color:#0071ff;
+     --main-color:lightblue;
+     --body-color: rgb(2,145,146);
+     --back-color:#F4F5F5;
+     --body-change:#283F54;
+}
+.darkmode{
+     --base-color:rgb(40,48,70);
+     --base-varient:rgb(40,48,70);
+     --text-color:#ffffff;
+     --secondary-text:#a4a5b8;
+     --primary-color:#3a435d;
+     --accent-color:#0071ff;
+     --body--color: rgb(2,145,146);
+     --back-color:#161E31;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background: 
+  url("/static/images/123.jpg") top center / 100% 40% no-repeat,
+  var(--back-color);
+ background-attachment: fixed;
+
+}
+
+input[type="date"] {
+  display: block;
+  visibility: visible;
+}
+
+.main-q{
+  margin-top: 80px;
+  display: inline-flex;
+  flex-wrap:wrap;
+}
+
+.main-o{
+  margin-left: 200px;
+  width: calc(100% - 200px); 
+  min-height: 130vh;
+}
+
+.new{
+  /* box-shadow: 0.2px 0.2px 3px black; */
+  display: inline-flex;
+  height: 6.2rem;
+  width: 49rem;
+  margin: 13px;
+  background: var(--base-varient);
+  border-radius: 0.428rem;
+}
+
+.new1{
+  /* border: 1px solid red; */
+  /* box-shadow: 0.2px 0.2px 3px black; */
+  display: inline-flex;
+  height: 6rem;
+  width:28rem;
+  background: var(--base-varient);
+  margin-top: 14px;
+  border-radius: 0.428rem;
+  align-items:center;
+  justify-content: center;  
+  font-size: 1rem;
+  font-weight: 900;
+}
+.new2 {
+  height: 5rem;
+  width: 80.5vw;
+  background: var(--base-varient);
+  margin-left: 20px;
+  border-radius: 0.428rem;
+  display: flex; /* Ensure the container aligns its children properly */
+  align-items: center; /* Center items vertically */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+.new2 ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none; /* Remove default bullets */
+  width: 100%; /* Ensure the menu takes full width */
+  padding: 0 25px; /* Adjust padding */
+}
+
+.new2 ul li {
+  padding: 10px 15px; /* Add padding for clickable space */
+  transition: background-color 0.3s ease-in-out, transform 0.2s; /* Smooth hover effect */
+  border-radius: var(--border-radius);
+}
+
+.new2 ul li:hover {
+  background-color: #82b9fc;
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.new2 ul li a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Keep text color consistent */
+  font-weight: 600; /* Make text stand out */
+  display: flex; /* Align icons and text properly */
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+}
+
+.new2 ul li.active {
+  background-color: #62a3e2; /* Slightly darker or different shade for active state */
+  transform: scale(1.05); /* Keep the zoom effect */
+}
+
+
+.main-m{
+height: 100vh;
+}
+
+
+/* .calender{
+
+  margin-top: 40px;
+  height: 10vh;
+  width: 80.5vw;
+  margin-left: 20px;
+  border-radius: 0.436rem;
+  align-items: center;
+  display: flex; 
+  background: var(--base-varient);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+} */
+
+/* .calender input{
+  margin-left: 10px;
+  padding: 20px;
+}
+
+.calender button{
+height: 2rem;
+width: 34rem;
+} */
+
+/* #mychart{
+  
+} */
+
+.chartss{
+  /* border: 1px solid black;  */
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* height: 500px; */
+  /* width: 95%; */
+  /* max-width: 100%; */
+  margin-right: 3rem;
+  height: auto;
+  margin-left: 20px;
+  border-radius: 0.436rem;
+  background: var(--base-varient);
+}
+.chartss p{
+  width: 100%;
+  height: 5vh;
+  background: #dbd6d6;
+  padding-right: 2rem;
+  color: rgb(185, 172, 172);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+/* 
+#myChart {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 1100px; /* Adjust as needed 
+  max-height: 500px; /* Adjust as needed 
+} */
+
+.calendar-container {
+  margin-top: 40px;
+  /* height: 10vh; */
+  width: 80.5vw;
+  margin-left: 20px;
+  border-radius: 0.436rem;
+  display: flex;
+  align-items: center;
+  background: var(--base-varient);
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.date-picker {
+  flex-grow: 1;
+  background: var(--blue-color);
+  color: white;
+  padding: 8px;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-container input {
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.generate-button {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.generate-button button {
+  background: var(--blue-color);
+  color: white;
+  border: 1px solid var(--blue-color);
+  padding: 8px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.download-button {
+  flex-grow: 0.5;
+  display: flex;
+  justify-content: center;
+}
+
+.download-button button {
+  background: var(--blue-color);
+  width: 3rem;
+  height: 2rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #0386CE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+}
+
+
+
+@media (max-width: 768px) {
+.hamburger{
+display: none;
+}
+.main-o{
+ margin-left: 0;
+
+}
+.main-z{
+  margin-top: 80px;
+  flex-wrap: wrap;
+}
+
+  .new{
+  width: 94vw;
+}
+.new1{
+  width: 94vw;
+  height: 120px;
+  margin-left: 10px;
+}
+.new2{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto; 
+   width: 93vw;
+}
+.new2 ul{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin-left: 10px;
+}
+.calendar-container{
+  flex-wrap: wrap;
+  width: 93vw;
+  height: auto;
+  margin-bottom: 3rem;
+}
+.date-container{
+  flex-wrap: wrap;
+  width: auto;
+  }
+.chartss{
+  width: 93vw;
+margin-left: 10px;
+}
+}
