@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTECH IOT DASHBOARD </title>
+  <link rel="stylesheet" href="{{url_for('static',filename= 'css/style.css')}}">
+  <!-- <link href="favicon.ico" rel="icon" type="image/x-icon"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+  <script type="text/javascript" src="{{url_for('static',filename='js/darkmode.js')}}" defer></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/script.js')}}" defer></script>
+
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['LAST MONTH DATA', 'OEF', 'Availability', 'Performance'],
+        ['F - 25', 0, 0, 0],
+        ['F - 24', 85, 85, 65],
+        ['F - 26', 55, 90, 60],
+        ['F - 27', 33, 90, 35]
+      ]);
+
+      var bgColor = getComputedStyle(document.documentElement).getPropertyValue('background-color').trim();
+
+      var options = {
+        chart: {},
+        backgroundColor: bgColor, // Apply dynamic background color
+        bars: 'vertical', // Ensure column chart format
+        bar: { groupWidth: "50%" }, // Adjust bar width
+        legend: { position: 'top' }, // Move legend to the top
+        annotations: {
+          alwaysOutside: false, // Keeps labels inside bars
+          textStyle: {
+            fontSize: 12,
+            color: 'white', // Ensure readability inside the bars
+            auraColor: 'none'
+          }
+        }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+
+
+  </script>
+</head>
+
+<body>
+<div class="fullypage">
+
+<!-- ================= Aside Navbar========================== -->
+<label >
+  <input type="checkbox">
+<div class="toggle">
+<span class="top_line common"></span>
+<span class="middle_line common"></span>
+<span class="bottom_line common"></span>
+
+</div>
+
+
+
+    <div class="sidebar">
+
+      <div class="sid-nav">
+        <div> <img src="{{ url_for('static', filename='css/logo.png')}}" style="width: 200px;">
+        </div>
+        <div>
+          <!-- <button class="hamburger">☰</button> -->
+        </div>
+
+      </div>
+      <ul>
+        <li><a href="{{url_for('index')}}" class="active">
+          <div style="display:flex;align-items: center;">
+            <span class="icon"><i class="fas fa-house" aria-hidden="true"></i>
+            </span>
+            <span class="title">Dashboard</span>
+            <span style= "background:#0487C7;height: 100%; width: 8px; position: absolute;right: 0; border-top-left-radius:var(--border-radius);border-bottom-left-radius: var(--border-radius) ;"></span></div>
+          </a>    </li>
+
+        <li>
+          <span class="icon"></span>
+          <h5>MACHINES</h5>
+        </li>
+
+        <li><a href="{{url_for('info')}}">
+            <span class="icon">
+              <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+              </span>
+              <span class="title">Info</span>
+              
+          </a></li>
+        <li><a href="{{url_for('over')}}
+        ">
+            <span class="icon">
+              <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+              </span>
+              <span class="title"> Overview</span>
+          </a></li>
+        <li><a href="{{url_for('register')}}">
+            <span class="icon">
+              <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+              </span>
+              <span class="title">Reports</span>
+          </a></li>
+
+        <li>
+          <span class="icon">
+            <h5>ADMINSTRATION</h5>
+        </li>
+
+        <li><a href="{{url_for('support')}}">
+            <span class="icon">
+              <span class="icon"><i class="fas fa-globe" aria-hidden="true"></i>
+              </span>
+              <span class="title">Support</span>
+          </a></li>
+      </ul>
+    </div>
+</label>
+
+    <!-- ==================main ====================== -->
+
+
+    <div class="main-container">
+
+
+
+
+
+
+      <div class="inner-item">
+
+    <div class="top_menu">
+       <div></div>
+       <div>
+        <ul>
+          <li>
+            <button id="theme-switch" onclick="toggleTheme()">
+              <i id="light-icon" class="fa-solid fa-sun"></i>
+              <i id="dark-icon" class="fa-solid fa-moon" style="display: none;"></i>
+            </button>
+          </li>
+
+          <li><a href="#"><i class="fa-solid fa-search"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+        <div class="cont">
+
+          <div id="box1" class="side_by_side">
+            <div class="point1">
+              <div class="point" style="background:#28C76F;"></div>
+              <span style="color: #6E6B7B;font-weight: 500;">Total Production</span>
+            </div>
+            <span style="color: #28C76F;font-weight: 800; font-size: 2rem; ">228.6T</span>
+          </div>
+
+          <div id="box2" class="side_by_side">
+            <div class="point1">
+              <div class="point" style="background: orange;"></div>
+              <span style="color: #6E6B7B;font-weight: 500;">Total Consumption</span>
+            </div>
+            <span style="color: orange; font-weight: 800; font-size: 2rem;">225.7T</span>
+
+          </div>
+        </div>
+
+        <div class="main-center">
+
+          <div class="center-container">
+
+            <div id="box3" class="function" style="color:#009999;font-weight: 900; font-size: 25px;">
+              <!-- <div class="skill">
+        <li> -->
+              <div>
+                <H3 style="display: flex;align-items: center;justify-content: center;">4</H3>
+
+                <p style="display: flex;align-items: center;justify-content: center;">Total
+                </p>
+                <span class="bar"><span class="t"></span></span>
+
+              </div>
+              <!-- <span class="bar"></span><span class="html"></span><span></span></li> -->
+              <!-- </div>  -->
+
+
+            </div>
+            <div id="box3" class="function"> <a href="{{url_for('over')}}"
+                style="color:green;font-weight: 900; font-size: 25px;">
+
+
+
+
+                <div>
+                  <H3 style="display: flex;align-items: center;justify-content: center;">4</H3>
+                  <p style="display: flex;align-items: center;justify-content: center;">Production
+                  </p>
+                  <span class="bar"><span class="v"></span></span>
+                </div>
+
+
+              </a></div>
+            <div id="box3" class="function" style="color:orangered;font-weight: 900; font-size: 25px;">
+
+
+              <div>
+                <H3 style="display: flex;align-items: center;justify-content: center;">0</H3>
+                <p style="display: flex;align-items: center;justify-content: center;">Fault
+                </p>
+                <span class="bar"><span class="f"></span></span>
+              </div>
+            </div>
+            <div id="box3" class="function" style="color:red;font-weight: 900; font-size: 25px;">
+
+              <div>
+                <H3 style="display: flex;align-items: center;justify-content: center;">0</H3>
+                <p style="display: flex;align-items: center;justify-content: center;">Stopped
+                </p>
+                <span class="bar"><span class="w"></span></span>
+              </div>
+            </div>
+            <div id="box3" class="function" style="color:#00CFE8;font-weight: 900; font-size: 25px;">
+              <div>
+                <H3 style="display: flex;align-items: center;justify-content: center;">0</H3>
+                <p style="display: flex;align-items: center;justify-content: center;">Idle
+                </p>
+                <span class="bar"><span class="i"></span></span>
+              </div>
+            </div>
+            <div id="box3" class="function" style="color:#6E6B7B;font-weight: 900; font-size: 25px;">
+
+              <div>
+                <H3 style="display: flex;align-items: center;justify-content: center;">0</H3>
+                <p style="display: flex;align-items: center;justify-content: center;">Disconnected
+                </p>
+                <span class="bar"><span class="x"></span></span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div id="straight">
+              <div id="box4">
+
+                <div style="display: flex; align-items: center;gap: 9px;"> <span
+                    style="background: white; height: 25px;width: 6px;"></span> <span>Shift A</span></div>
+
+                <span>69.7T</span>
+
+
+              </div>
+              <div id="box4">
+
+                <div style="display: flex; align-items: center;gap: 9px;"> <span
+                    style="background: white; height: 25px;width: 6px;"></span> <span>Shift B</span></div>
+                <span>69.7T</span>
+              </div>
+
+              <div id="box4">
+                <div style="display: flex; align-items: center;gap: 9px;"> <span
+                    style="background: white; height: 25px;width: 6px;"></span> <span>Shift C</span></div>
+                <span>69.7T</span>
+              </div>
+
+              <div id="box4" style="background-color: orange;">
+                <div style="display: flex; align-items: center;gap: 9px;"> <span
+                    style="background: white; height: 25px;width: 6px;"></span> <span>Shift D </span></div>
+                <span>69.7T</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="un">
+            <div id="box6">
+              <div class="container">
+                <div class="heading">
+                  <h1>F24</h1>
+                </div>
+                <div class="sub-heading">Top-Performer</div>
+                <div class="details">
+                  <div class="detail"><span>Downtime:</span> <span class="last">63 hrs</span></div>
+                  <div class="detail"><span>Production:</span> <span class="last">172.2T</span></div>
+                  <div class="detail"><span>Efficiency:</span> <span class="last">63 hrs</span></div>
+                  <div class="detail"><span>Availability:</span> <span class="last">63 hrs</span></div>
+                  <div class="detail"><span>Performance:</span> <span class="last">63 hrs</span></div>
+                  <div class="detail"><span></span>
+                    <span
+                      style="color: #009999; background: #a8f3f3 ; padding: 4px; border-radius: var(--border-radius);font-weight: 500;">Last
+                      Month Data</span></div>
+                </div>
+              </div>
+            </div>
+
+
+            <div id="box7">
+
+              <div class="go">
+                <div style="display: flex;justify-content: space-around;border-bottom:1px solid rgb(220, 217, 217) ;padding-top: 1rem;padding-bottom: 1rem;">
+                  <span style="font-weight: 600;font-size: 19px;">Production</span>
+                  <span></span>
+                  <span></span>
+                  <span style="font-weight: 700;font-size: 19px;">343.10T</span>
+                </div>
+
+
+
+                <div class="pie"></div>
+
+
+
+              </div>
+              <div class="ready">
+
+                <span style="color:#FF9F43;border-bottom: 1px solid rgb(220,217,217);font-weight:600;font-size: 19px;padding-left: 2rem;
+                padding-bottom: 1rem;padding-top: 1rem;">Efficiency</span>
+                
+                <div id="columnchart_material">
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/ea3961044f.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script> -->
+
+</body>
+
+</html>

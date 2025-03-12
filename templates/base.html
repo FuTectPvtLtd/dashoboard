@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTECH IOT DASHBOARD </title>
+  <link rel="stylesheet" href="{{url_for('static',filename= 'css/style.css')}}">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+  <script type="text/javascript" src="{{url_for('static',filename='js/darkmode.js')}}" defer></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/script.js')}}" defer></script>
+
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Category', 'OEF', 'Availability', 'Performance'],
+        ['F - 25', 0, 0, 0],
+        ['F - 24', 85, 85, 65],
+        ['F - 26', 55, 90, 60],
+        ['F - 27', 33, 90, 35]
+      ]);
+
+      var bgColor = getComputedStyle(document.documentElement).getPropertyValue('background-color').trim();
+
+      var options = {
+        chart: {},
+        backgroundColor: bgColor, // Apply dynamic background color
+        bars: 'vertical', // Ensure column chart format
+        bar: { groupWidth: "50%" }, // Adjust bar width
+        legend: { position: 'top' }, // Move legend to the top
+        annotations: {
+          alwaysOutside: false, // Keeps labels inside bars
+          textStyle: {
+            fontSize: 12,
+            color: 'white', // Ensure readability inside the bars
+            auraColor: 'none'
+          }
+        }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+
+
+  </script>
+</head>
+
+<body>
+  <div class="fullypage">
+
+    <!-- ================= Aside Navbar========================== -->
+    <label>
+      <input type="checkbox">
+      <div class="toggle">
+        <span class="top_line common"></span>
+        <span class="middle_line common"></span>
+        <span class="bottom_line common"></span>
+
+      </div>
+
+
+
+      <div class="sidebar">
+
+        <div class="sid-nav">
+          <div> <img src="{{ url_for('static', filename='css/logo.png')}}" style="width: 200px;">
+          </div>
+          <div>
+            <!-- <button class="hamburger">☰</button> -->
+          </div>
+
+        </div>
+        <ul>
+          <li><a href="{{url_for('index')}}" class="active">
+            <div style="display:flex;align-items: center;">
+              <span class="icon"><i class="fas fa-house" aria-hidden="true"></i>
+              </span>
+              <span class="title">Dashboard</span>
+              <span style= "background:#0487C7;height: 100%; width: 8px; position: absolute;right: 0; border-top-left-radius:var(--border-radius);border-bottom-left-radius: var(--border-radius) ;"></span></div>
+            </a>    </li>
+
+          <li>
+            <span class="icon"></span>
+            <h5>MACHINES</h5>
+          </li>
+
+          <li><a href="{{url_for('info')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Info</span>
+            </a></li>
+          <li><a href="{{url_for('over')}}
+        ">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title"> Overview</span>
+            </a></li>
+          <li><a href="{{url_for('register')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Reports</span>
+            </a></li>
+
+          <li>
+            <span class="icon">
+              <h5>ADMINSTRATION</h5>
+          </li>
+
+          <li><a href="{{url_for('support')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-globe" aria-hidden="true"></i>
+                </span>
+                <span class="title">Support</span>
+            </a></li>
+        </ul>
+      </div>
+    </label>
+
+    <!-- ==================main ====================== -->
+    <div class="top_menu">
+      <div></div>
+      <div>
+        <ul>
+          <li>
+            <button id="theme-switch" onclick="toggleTheme()">
+              <i id="light-icon" class="fa-solid fa-sun"></i>
+              <i id="dark-icon" class="fa-solid fa-moon" style="display: none;"></i>
+            </button>
+          </li>
+
+          <li><a href="#"><i class="fa-solid fa-search"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <div class="inner-item">
+        {% block content %}
+
+
+
+        
+        {% endblock %}
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/ea3961044f.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script> -->
+
+</body>
+
+</html>

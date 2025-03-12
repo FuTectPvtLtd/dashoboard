@@ -1,0 +1,321 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTECH IOT DASHBOARD </title>
+ 
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> 
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ostyle.css')}}">
+  <script type="text/javascript" src= "{{url_for('static', filename='js/darkmode.js')}}" defer></script>
+  <script type="text/javascript" src= "{{url_for('static', filename='js/script.js')}}"></script>
+
+</head>
+<body >
+ 
+  <label >
+    <input type="checkbox">
+  <div class="toggle">
+  <span class="top_line common"></span>
+  <span class="middle_line common"></span>
+  <span class="bottom_line common"></span>
+  
+  </div>
+  
+  
+  
+      <div class="sidebar">
+  
+        <div class="sid-nav">
+          <div> <img src="{{ url_for('static', filename='css/logo.png')}}" style="width: 200px;">
+          </div>
+          <div>
+            <!-- <button class="hamburger">☰</button> -->
+          </div>
+  
+        </div>
+        <ul>
+          <li><a href="{{url_for('index')}}" class="active">
+              <span class="icon"><i class="fas fa-house" aria-hidden="true"></i>
+              </span>
+              <span class="title">Dashboard</span>
+              <!-- <span style="display: flex;flex-direction: row; justify-content: end;background:blue;height: 10px; width: 10px;"></span> -->
+            </a></li>
+  
+          <li>
+            <span class="icon"></span>
+            <h5>MACHINES</h5>
+          </li>
+  
+          <li><a href="{{url_for('info')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Info</span>
+            </a></li>
+          <li><a href="{{url_for('over')}}
+          ">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title"> Overview</span>
+            </a></li>
+          <li><a href="{{url_for('register')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Reports</span>
+            </a></li>
+  
+          <li>
+            <span class="icon">
+              <h5>ADMINSTRATION</h5>
+          </li>
+  
+          <li><a href="{{url_for('support')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-globe" aria-hidden="true"></i>
+                </span>
+                <span class="title">Support</span>
+            </a></li>
+        </ul>
+      </div>
+  </label>
+
+<!-- =======================================main Body=========================================== -->
+<div class="top_menu">
+  <div></div>
+  <div>
+   <ul>
+     <li>
+       <button id="theme-switch" onclick="toggleTheme()">
+         <i id="light-icon" class="fa-solid fa-sun"></i>
+         <i id="dark-icon" class="fa-solid fa-moon" style="display: none;"></i>
+       </button>
+     </li>
+
+     <li><a href="#"><i class="fa-solid fa-search"></i></a></li>
+     <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+     <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+   </ul>
+ </div>
+</div>
+
+
+    <div class="main-containery">
+      <div class="main-contain">
+     <div class="upper-nav">
+      <ul>
+      <li><a href="{{url_for('info')}}">
+        <span class="icon">
+          <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+        </span>
+        <span class="title">Info</span>
+      </a></li>
+      <li><a href="{{url_for('over')}}" >
+        <span class="icon">
+          <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+        </span>
+        <span class="title"> Overview</span>
+      </a></li>
+      <li><a href="{{url_for('register')}}">
+        <span class="icon">
+          <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+        </span>
+        <span class="title">Reports</span>
+      </a></li></ul>
+     </div>
+
+     <div class="containerr">
+      <div class="boxy" id="box-1">
+          <h1 style="color: rgb(27, 226, 237);">0</h1>
+          <p>Disconnected</p>
+          <i class="icon fas fa-times-circle" style="color: rgb(27, 226, 237);height: 40px;width: 40px;background-color: #E0F9FC;display: flex;align-items: center;justify-content: center;border-radius: var(--border-radius);"></i>
+      </div>
+      
+      <div class="boxy" id="box-2">
+          <h1 style="color: rgb(71, 158, 17);">3</h1>
+          <p>Running</p>
+          <i class="icon fas fa-play-circle" style="color: rgb(71, 158, 17);height: 40px;width: 40px;background-color: #E5F8ED;display: flex;align-items: center;justify-content: center;border-radius: var(--border-radius);"></i>
+      </div>
+  
+      <div class="boxy" id="box-3">
+          <h1 style="color:#009797;">0</h1>
+          <p>Stopped</p>
+          <i class="icon fas fa-stop-circle" style="color:#009797;height: 40px;width: 40px;background-color: #E0F3F3;display: flex;align-items: center;justify-content: center;border-radius: var(--border-radius);"></i>
+      </div>
+  
+      <div class="boxy" id="box-4">
+          <h1 style="color: orange;">0</h1>
+          <p>Fault</p>
+          <i class="icon fas fa-exclamation-circle" style="color: orange;height: 40px;width: 40px;background-color:#FFF3E8;display: flex;align-items: center;justify-content: center;border-radius: var(--border-radius)";></i>
+      </div>
+  </div>
+  
+     <div>
+
+      
+      <div id="xyz">
+     
+          <!-- Box A (Title) -->
+          <div class="classa" id="box-a">
+
+
+              <a href="{{url_for('dashboard')}}">
+                  <h4>
+                    
+                    <span>F24</span>
+                    <span> Running Normal</span>
+                  </h4>
+              </a>
+               <!-- YO Section (Speed & Production) -->
+              <div class="soup">
+                <div class="yo" >
+                    <span class="y1" >
+                      <h1>16ms</h1></span>
+                    <span  class="y2">Speed</span>
+                </div><span style="width: 1px;height: 100px; background: silver;"></span>
+                <div class="yo"> 
+                    <span class="y3"><h1>0.9T</h1></span>
+                    <span class="y4">Production</span>
+                </div>
+            </div>
+        
+            <!-- HONEY Section (OEE, Avail, Perf) -->
+            <div class="honey-container">
+                <div class="honey" >
+                    <span class="y5"><h2>86.5%</h2></span>
+                    <span class="y6">OEE</span>
+                </div>
+                <span style="width: 1px;height: 100px; background: silver;"></span>
+                <div class="honey" > 
+                    <span class="y7"><h2>86.5%</h2></span>
+                    <span class="y8">Avail</span>
+                </div>
+                <span style="width: 1px;height: 100px; background: silver;"></span>
+                <div class="honey">
+                    <span class="y9"><h2>86.5%</h2></span>
+                    <span class="y0">Perf</span>
+                </div>
+            </div>
+          </div>
+      
+         
+         
+   
+     
+
+
+<!-- 
+        <div class="classa" id="box-b">  <a href="{{url_for('dashboard')}}">F26 Disconnected</a> </div> -->
+        <div class="classa" id="box-a">
+
+
+          <a href="{{url_for('dashboard')}}">
+              <h4>
+                
+                <span>F26</span>
+                <span> Running Normal</span>
+              </h4>
+          </a>
+           <!-- YO Section (Speed & Production) -->
+          <div class="soup">
+            <div class="yo" >
+                <span class="y1" >
+                  <h1>16ms</h1></span>
+                <span  class="y2">Speed</span>
+            </div><span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="yo"> 
+                <span class="y3"><h1>0.9T</h1></span>
+                <span class="y4">Production</span>
+            </div>
+        </div>
+    
+        <!-- HONEY Section (OEE, Avail, Perf) -->
+        <div class="honey-container">
+            <div class="honey" >
+                <span class="y5"><h2>86.5%</h2></span>
+                <span class="y6">OEE</span>
+            </div>
+            <span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="honey" > 
+                <span class="y7"><h2>86.5%</h2></span>
+                <span class="y8">Avail</span>
+            </div>
+            <span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="honey">
+                <span class="y9"><h2>86.5%</h2></span>
+                <span class="y0">Perf</span>
+            </div>
+        </div>
+      </div>
+  
+     
+     
+
+
+
+
+
+
+        <!-- <div class="classa" id="box-c">   <a href="{{url_for('dashboard')}}">F27 Stopped</a></div> -->
+
+
+        <div class="classa" id="box-a">
+
+
+          <a href="{{url_for('dashboard')}}">
+              <h4>
+                
+                <span>F27</span>
+                <span> Running Normal</span>
+              </h4>
+          </a>
+           <!-- YO Section (Speed & Production) -->
+          <div class="soup">
+            <div class="yo" >
+                <span class="y1" >
+                  <h1>16ms</h1></span>
+                <span  class="y2">Speed</span>
+            </div><span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="yo"> 
+                <span class="y3"><h1>0.9T</h1></span>
+                <span class="y4">Production</span>
+            </div>
+        </div>
+    
+        <!-- HONEY Section (OEE, Avail, Perf) -->
+        <div class="honey-container">
+            <div class="honey" >
+                <span class="y5"><h2>86.5%</h2></span>
+                <span class="y6">OEE</span>
+            </div>
+            <span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="honey" > 
+                <span class="y7"><h2>86.5%</h2></span>
+                <span class="y8">Avail</span>
+            </div>
+            <span style="width: 1px;height: 100px; background: silver;"></span>
+            <div class="honey">
+                <span class="y9"><h2>86.5%</h2></span>
+                <span class="y0">Perf</span>
+            </div>
+        </div>
+      </div>
+  
+       </div>
+ 
+     
+  </div>
+ 
+
+      </div>
+     </div>
+    </div>
+    <script src="https://kit.fontawesome.com/ea3961044f.js" crossorigin="anonymous"></script>
+  
+</body>
+</html>

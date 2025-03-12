@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTECH IOT DASHBOARD </title>
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/msytle.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/pareto.css')}}">
+  <script type="text/javascript" src="{{url_for('static', filename = 'js/darkmode.js')}}" defer></script>
+  <script type="text/javascript" src="{{url_for('static', filename = 'js/graph.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename = 'js/script.js')}}" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+  <label >
+    <input type="checkbox">
+  <div class="toggle">
+  <span class="top_line common"></span>
+  <span class="middle_line common"></span>
+  <span class="bottom_line common"></span>
+  
+  </div>
+  
+  
+  
+      <div class="sidebar">
+  
+        <div class="sid-nav">
+          <div> <img src="{{ url_for('static', filename='css/logo.png')}}" style="width: 200px;">
+          </div>
+          <div>
+            <!-- <button class="hamburger">☰</button> -->
+          </div>
+  
+        </div>
+        <ul>
+          <li><a href="{{url_for('index')}}" class="active">
+              <span class="icon"><i class="fas fa-house" aria-hidden="true"></i>
+              </span>
+              <span class="title">Dashboard</span>
+              <!-- <span style="display: flex;flex-direction: row; justify-content: end;background:blue;height: 10px; width: 10px;"></span> -->
+            </a></li>
+  
+          <li>
+            <span class="icon"></span>
+            <h5>MACHINES</h5>
+          </li>
+  
+          <li><a href="{{url_for('info')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Info</span>
+            </a></li>
+          <li><a href="{{url_for('over')}}
+          ">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title"> Overview</span>
+            </a></li>
+          <li><a href="{{url_for('register')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">Reports</span>
+            </a></li>
+  
+          <li>
+            <span class="icon">
+              <h5>ADMINSTRATION</h5>
+          </li>
+  
+          <li><a href="{{url_for('support')}}">
+              <span class="icon">
+                <span class="icon"><i class="fas fa-globe" aria-hidden="true"></i>
+                </span>
+                <span class="title">Support</span>
+            </a></li>
+        </ul>
+      </div>
+  </label>
+
+
+
+
+<!-- ===============================main start========================================= -->
+<div class="top_menu">
+  <div></div>
+  <div>
+   <ul>
+     <li>
+       <button id="theme-switch" onclick="toggleTheme()">
+         <i id="light-icon" class="fa-solid fa-sun"></i>
+         <i id="dark-icon" class="fa-solid fa-moon" style="display: none;"></i>
+       </button>
+     </li>
+
+     <li><a href="#"><i class="fa-solid fa-search"></i></a></li>
+     <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+     <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+   </ul>
+ </div>
+</div>
+
+
+
+
+    <div class="main-o">
+      <div class="main-y">
+        <div class="main-q">
+          <div class="new" style="color: #009999; font-weight: 900;
+     font-size: 30px; justify-content: space-between; align-items: center; padding: 10px;"> 
+     <div > <span>F-25</span> </div>
+              
+                <div>
+                  <span>Running Normal</span>
+                </div>
+            
+          </div>
+
+
+          <div>
+            <div class="new1" style="justify-content: space-between; padding-left:20px;padding-right: 20px;">
+              
+             <div>
+              <div style="padding-bottom: 2rem;">
+                 <span style="color: rgb(187, 178, 178);">Connection Status</span></div>
+                 <div>
+                 <span style="color: rgb(62, 171, 62); background: rgb(232, 245, 232);padding: 5px;border-radius: var(--border-radius);"> Connected</span>
+                 </div>
+             </div> 
+           
+             <div >
+              <div style="padding-bottom: 2rem;">               
+                <span style= "color: rgb(187, 178, 178);">Last Event </span></div>
+
+               <div>
+                <span style="background: #d0e4e4;padding: 5px;border-radius: var(--border-radius);">20 Minutes Ago</span>
+               </div>
+
+            </div>
+            
+            
+            </div>
+
+          </div>
+
+        </div>
+        <div class="new2">
+
+          <ul >
+            <li><a href= "{{url_for('dashboard')}}">
+                <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                </span>
+                <span class="title">overview</span>
+              </a></li>
+
+
+
+        
+
+
+            <li><a href="#">
+                <span >
+                  <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Production</span>
+              </a></li>
+            <li><a href="#">
+                <span >
+                  <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Downtime</span>
+              </a></li>
+            <li><a href="#">
+                <span >
+                  <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Logs</span>
+              </a></li>
+           
+              <li><a href="{{url_for('pareto')}}">
+            
+                  <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Pareto Chart</span> </a></li>
+            <!-- <li><a href="#">
+                <span >
+                  <span class="machine-function"><i class="fas fa-inbox" aria-hidden="true"></i>
+                  </span>
+                    <h6 style="background-color: red; width: 50px;"> Pareto Chart</h6>
+                  <span class="title"> -->
+                  
+                  <!-- <a href="{{url_for('pareto')}}">
+                    <canvas id="perto"></canvas>
+                     </a>
+                  </span>
+              </a></li> -->
+          </ul>
+        </div>
+
+
+
+        <div class="calendar-container">
+          <div class="date-picker">
+              <div class="date-container">
+                  <label for="start-date">Starting Date:</label>
+                  <input type="date" id="start-date">
+      
+                  <span>to</span>
+      
+                  <label for="end-date">End Date:</label>
+                  <input type="date" id="end-date">
+              </div>
+          </div>
+      
+          <div class="generate-button">
+              <button>Generate</button>
+          </div>
+      
+          <div class="download-button">
+              <button onclick="downloadExcel()">
+                  <ion-icon name="download-outline"></ion-icon>
+              </button>
+          </div>
+      </div>
+
+
+      
+      </div>
+      
+      <div>
+        <div class="chartss"> 
+          <p> perto chart</p>
+
+          <canvas id="myChart">
+
+          </canvas>
+      <!-- <canvas class="gr"></canvas> -->
+
+
+
+      
+   
+</div>
+     </div>
+     <script>
+    const ctx = document.getElementById('myChart');
+    
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Die Changed planned','Power Fluctuation','Mechanical'],
+        datasets: [{
+          label: 'Downtime',
+          backgroundColor: '#0386CE',
+          data: [3,15,15],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+            display: true,
+            text: 'Downtime (Minutes)'
+            }
+            
+          }
+        }
+      }
+    });
+    function downloadExcel() {
+            window.location.href = "/download_excel";
+        }
+    </script>
+
+      
+<!-- ==================scripts============ -->
+ 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://kit.fontawesome.com/ea3961044f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
