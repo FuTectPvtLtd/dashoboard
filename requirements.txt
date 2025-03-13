@@ -1,0 +1,7 @@
+fastapi
+unicorn
+html
+css 
+javascript
+python
+pandas
